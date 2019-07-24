@@ -15,12 +15,17 @@ import com.borisovskiy.simplemvp.presenter.Presenter;
 
 import java.util.List;
 
+import javax.inject.Inject;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
+import dagger.android.support.DaggerAppCompatActivity;
 
-public class MainActivity extends AppCompatActivity implements Contract.IView {
+public class MainActivity extends DaggerAppCompatActivity implements Contract.IView {
 
+    @Inject
+    QuoteModel quoteModel;
     private final RecViewAdapter recViewAdapter = new RecViewAdapter();
     @BindView(R.id.list)
     RecyclerView recyclerView;
@@ -32,7 +37,7 @@ public class MainActivity extends AppCompatActivity implements Contract.IView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
-        presenter = new Presenter(new QuoteModel());
+        presenter = new Presenter(quoteModel, this);
         initialiseRecyclerView();
     }
 
@@ -44,7 +49,7 @@ public class MainActivity extends AppCompatActivity implements Contract.IView {
     @Override
     protected void onStart() {
         super.onStart();
-        presenter.onAttachUI(this);
+        presenter.onAttachUI();
     }
 
     @Override

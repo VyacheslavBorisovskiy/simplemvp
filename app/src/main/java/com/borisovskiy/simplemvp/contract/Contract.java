@@ -13,6 +13,6 @@ public interface Contract {
     }
 
     interface IPresenter {
-        void onAttachUI(IView view);
+        void onAttachUI();
     }
 }
