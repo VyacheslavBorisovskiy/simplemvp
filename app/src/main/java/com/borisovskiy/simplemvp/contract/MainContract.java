@@ -13,8 +13,6 @@ public interface MainContract {
     }
 
     interface MainPresenter {
-        void onButtonClick();
-
         void onDestroy();
     }
 }

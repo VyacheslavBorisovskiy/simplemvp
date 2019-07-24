@@ -1,8 +1,8 @@
 package com.borisovskiy.simplemvp.presenter;
 
 import com.borisovskiy.simplemvp.contract.MainContract;
-import com.borisovskiy.simplemvp.contract.MainContract.Quote;
 import com.borisovskiy.simplemvp.contract.MainContract.MainView;
+import com.borisovskiy.simplemvp.contract.MainContract.Quote;
 
 public class MainPresenterImpl implements MainContract.MainPresenter {
 
@@ -12,12 +12,6 @@ public class MainPresenterImpl implements MainContract.MainPresenter {
     public MainPresenterImpl(MainView mainView, Quote quote) {
         this.mainView = mainView;
         this.quote = quote;
-    }
-
-    @Override
-    public void onButtonClick() {
-        if (mainView == null) return;
-        mainView.setQuote(quote.getQuotes().get(0));
     }
 
     @Override

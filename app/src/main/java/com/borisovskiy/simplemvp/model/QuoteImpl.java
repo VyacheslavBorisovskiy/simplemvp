@@ -17,6 +17,4 @@ public class QuoteImpl implements MainContract.Quote {
     public List<String> getQuotes() {
         return quotes;
     }
-
-    
 }
