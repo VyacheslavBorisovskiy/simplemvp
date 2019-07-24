@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">SimpleMvp</string>
+    <string name="mvp_pattern">MVP pattern</string>
+    <string name="button">Button</string>
+</resources>
