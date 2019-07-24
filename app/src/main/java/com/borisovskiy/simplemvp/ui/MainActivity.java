@@ -32,7 +32,7 @@ public class MainActivity extends AppCompatActivity implements Contract.IView {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
-        presenter = new Presenter(new QuoteModel());
+        presenter = new Presenter(this, new QuoteModel());
         initialiseRecyclerView();
     }
 
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity implements Contract.IView {
     @Override
     protected void onStart() {
         super.onStart();
-        presenter.onAttachUI(this);
+        presenter.onAttachUI();
     }
 
     @Override
@@ -56,5 +56,6 @@ public class MainActivity extends AppCompatActivity implements Contract.IView {
     protected void onDestroy() {
         unbinder.unbind();
         super.onDestroy();
+        presenter.onDettachUI();
     }
 }
