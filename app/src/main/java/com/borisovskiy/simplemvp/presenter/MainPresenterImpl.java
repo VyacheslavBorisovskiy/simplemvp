@@ -1,10 +1,10 @@
 package com.borisovskiy.simplemvp.presenter;
 
 import com.borisovskiy.simplemvp.contract.MainContract;
-import com.borisovskiy.simplemvp.contract.MainContract.MainView;
 import com.borisovskiy.simplemvp.contract.MainContract.Quote;
+import com.borisovskiy.simplemvp.contract.MainContract.MainView;
 
-public class MainPresenterImpl implements MainContract.MainPresenter, Quote.OnSetListener {
+public class MainPresenterImpl implements MainContract.MainPresenter {
 
     private MainView mainView;
     private Quote quote;
@@ -16,13 +16,8 @@ public class MainPresenterImpl implements MainContract.MainPresenter, Quote.OnSe
 
     @Override
     public void onButtonClick() {
-        quote.getNextQuote(this);
-    }
-
-    @Override
-    public void onSet(String string) {
         if (mainView == null) return;
-        mainView.setQuote(string);
+        mainView.setQuote(quote.getQuotes().get(0));
     }
 
     @Override

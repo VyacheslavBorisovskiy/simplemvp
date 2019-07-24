@@ -1,5 +1,7 @@
 package com.borisovskiy.simplemvp.contract;
 
+import java.util.List;
+
 public interface MainContract {
 
     interface MainView {
@@ -7,11 +9,7 @@ public interface MainContract {
     }
 
     interface Quote {
-        void getNextQuote(OnSetListener listener);
-
-        interface OnSetListener {
-            void onSet(String string);
-        }
+        List<String> getQuotes();
     }
 
     interface MainPresenter {
