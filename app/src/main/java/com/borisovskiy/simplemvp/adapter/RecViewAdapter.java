@@ -19,8 +19,6 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.QuoteVie
 
     private List<String> items;
 
-    // TODO: check true arg
-
     @NonNull
     @Override
     public QuoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -53,10 +51,5 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.QuoteVie
             super(itemView);
             ButterKnife.bind(this, itemView);
         }
-
-//        private void bind(List<String> items) {
-//            Context context = recViewItem.getContext();
-//            recViewItem.setText(context.getString(s))
-//        }
     }
 }
