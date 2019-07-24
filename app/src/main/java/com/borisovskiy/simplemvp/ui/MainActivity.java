@@ -3,21 +3,28 @@ package com.borisovskiy.simplemvp.ui;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.borisovskiy.simplemvp.R;
 import com.borisovskiy.simplemvp.adapter.RecViewAdapter;
-import com.borisovskiy.simplemvp.contract.MainContract;
-import com.borisovskiy.simplemvp.contract.MainContract.MainPresenter;
-import com.borisovskiy.simplemvp.model.QuoteImpl;
-import com.borisovskiy.simplemvp.presenter.MainPresenterImpl;
+import com.borisovskiy.simplemvp.contract.Contract;
+import com.borisovskiy.simplemvp.contract.Contract.IPresenter;
+import com.borisovskiy.simplemvp.model.QuoteModel;
+import com.borisovskiy.simplemvp.presenter.Presenter;
 
+import java.util.List;
+
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.Unbinder;
 
-public class MainActivity extends AppCompatActivity implements MainContract.MainView {
+public class MainActivity extends AppCompatActivity implements Contract.IView {
 
     private final RecViewAdapter recViewAdapter = new RecViewAdapter();
-    private MainPresenter presenter;
+    @BindView(R.id.list)
+    RecyclerView recyclerView;
+    private IPresenter presenter;
     private Unbinder unbinder;
 
     @Override
@@ -25,18 +32,29 @@ public class MainActivity extends AppCompatActivity implements MainContract.Main
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         unbinder = ButterKnife.bind(this);
-        presenter = new MainPresenterImpl(this, new QuoteImpl());
+        presenter = new Presenter(new QuoteModel());
+        initialiseRecyclerView();
+    }
+
+    private void initialiseRecyclerView() {
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        recyclerView.setAdapter(recViewAdapter);
     }
 
     @Override
-    public void setQuote(String string) {
-        quotesTextView.setText(string);
+    protected void onStart() {
+        super.onStart();
+        presenter.onAttachUI(this);
+    }
+
+    @Override
+    public void setData(List<String> items) {
+        recViewAdapter.setItems(items);
     }
 
     @Override
     protected void onDestroy() {
         unbinder.unbind();
-        presenter.onDestroy();
         super.onDestroy();
     }
 }

@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 
 public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.QuoteViewHolder> {
 
-    private List<String> quotes;
+    private List<String> items;
 
     // TODO: check true arg
 
@@ -30,13 +30,18 @@ public class RecViewAdapter extends RecyclerView.Adapter<RecViewAdapter.QuoteVie
 
     @Override
     public void onBindViewHolder(@NonNull QuoteViewHolder holder, int position) {
-        String item = quotes.get(position);
+        String item = items.get(position);
         holder.recViewItem.setText(item);
+    }
+
+    public void setItems(List<String> items) {
+        this.items = items;
+        notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        return quotes.size();
+        return items.size();
     }
 
     class QuoteViewHolder extends RecyclerView.ViewHolder {

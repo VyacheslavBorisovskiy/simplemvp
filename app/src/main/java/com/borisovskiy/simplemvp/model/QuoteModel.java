@@ -1,11 +1,11 @@
 package com.borisovskiy.simplemvp.model;
 
-import com.borisovskiy.simplemvp.contract.MainContract;
+import com.borisovskiy.simplemvp.contract.Contract;
 
 import java.util.Arrays;
 import java.util.List;
 
-public class QuoteImpl implements MainContract.Quote {
+public class QuoteModel implements Contract.IQuoteModel {
 
     private List<String> quotes = Arrays.asList(
             "Life is what happens when you’re busy making other plans.",
@@ -14,7 +14,7 @@ public class QuoteImpl implements MainContract.Quote {
     );
 
     @Override
-    public List<String> getQuotes() {
+    public List<String> getItems() {
         return quotes;
     }
 }
