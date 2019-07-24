@@ -20,7 +20,7 @@ public class Presenter implements Contract.IPresenter {
     }
 
     @Override
-    public void onDettachUI() {
+    public void onDetachUI() {
         view = null;
     }
 }

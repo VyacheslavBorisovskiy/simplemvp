@@ -15,6 +15,10 @@ public interface Contract {
     interface IPresenter {
         void onAttachUI();
 
-        void onDettachUI();
+        void onDetachUI();
+    }
+
+    public interface IHost {
+
     }
 }
