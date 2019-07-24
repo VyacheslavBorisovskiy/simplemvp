@@ -17,8 +17,4 @@ public interface Contract {
 
         void onDetachUI();
     }
-
-    public interface IHost {
-
-    }
 }

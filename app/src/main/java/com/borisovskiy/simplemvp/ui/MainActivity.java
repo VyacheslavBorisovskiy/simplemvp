@@ -5,9 +5,8 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.borisovskiy.simplemvp.R;
-import com.borisovskiy.simplemvp.contract.Contract;
 
-public class MainActivity extends AppCompatActivity implements Contract.IHost {
+public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,9 +18,5 @@ public class MainActivity extends AppCompatActivity implements Contract.IHost {
                     .add(R.id.container, new MainFragment())
                     .commit();
         }
-
-
     }
-
-
 }
