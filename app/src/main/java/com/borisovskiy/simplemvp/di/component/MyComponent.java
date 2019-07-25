@@ -13,10 +13,6 @@ import dagger.android.AndroidInjector;
 import dagger.android.DaggerApplication;
 import dagger.android.support.AndroidSupportInjectionModule;
 
-/**
- * Created by anupamchugh on 06/11/17.
- */
-
 @Singleton
 // Компонент - это мостик между модулем и инъекцией. Здесь необх-о подключить модули, чтобы дагер сгенерировал
 // класс где автоматически сгенерируется код, который все эти зависимости представит

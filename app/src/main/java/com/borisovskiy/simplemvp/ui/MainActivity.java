@@ -60,6 +60,7 @@ public class MainActivity extends DaggerAppCompatActivity implements Contract.IV
     @Override
     protected void onDestroy() {
         unbinder.unbind();
+        presenter.onDetachUI();
         super.onDestroy();
     }
 }

@@ -17,4 +17,9 @@ public class Presenter implements Contract.IPresenter {
     public void onAttachUI() {
         view.setData(model.getItems());
     }
+
+    @Override
+    public void onDetachUI() {
+        view = null;
+    }
 }
