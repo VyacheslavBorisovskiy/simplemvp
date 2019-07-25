@@ -9,12 +9,12 @@ import dagger.android.ContributesAndroidInjector;
 @Module
 public interface MainActivityModule {
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = {FragmentModule.class})
     // Сгенерирует Android injector (шприц) для возвращаемого типа (MainActiv)
     // Дагер сможет заинжэктить все зависимости для MainActiv
     abstract MainActivity contributesMainActivity();
 
-    @ContributesAndroidInjector
+    @ContributesAndroidInjector(modules = {ViewModule.class})
     abstract MainFragment contributeMainFragment();
 
 }
