@@ -8,9 +8,9 @@ public class Presenter implements Contract.IPresenter {
     private IQuoteModel model;
     private Contract.IView view;
 
-    public Presenter(IQuoteModel model, Contract.IView view) {
-        this.model = model;
+    public Presenter(Contract.IView view, IQuoteModel model) {
         this.view = view;
+        this.model = model;
     }
 
     @Override

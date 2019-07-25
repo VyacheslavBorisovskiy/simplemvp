@@ -1,14 +1,36 @@
 package com.borisovskiy.simplemvp;
 
+import android.app.Activity;
+import android.app.Application;
+
 import com.borisovskiy.simplemvp.di.component.DaggerMyComponent;
 
-import dagger.android.AndroidInjector;
-import dagger.android.DaggerApplication;
+import javax.inject.Inject;
 
-public class App extends DaggerApplication {
+import dagger.android.AndroidInjector;
+import dagger.android.DispatchingAndroidInjector;
+import dagger.android.HasActivityInjector;
+
+public class App extends Application implements HasActivityInjector {
+    @Inject
+    DispatchingAndroidInjector<Activity> dispatchingAndroidInjector;
 
     @Override
-    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
-        return DaggerMyComponent.builder().application(this).build();
+    public AndroidInjector<Activity> activityInjector() {
+        return dispatchingAndroidInjector;
     }
+
+    @Override
+    public void onCreate() {
+        super.onCreate();
+        DaggerMyComponent.builder()
+                .application(this)
+                .build()
+                .inject(this);
+    }
+
+    //    @Override
+//    protected AndroidInjector<? extends DaggerApplication> applicationInjector() {
+//        return DaggerMyComponent.builder().application(this).build();
+//    }
 }
