@@ -20,7 +20,9 @@ public class MainActivity extends AppCompatActivity implements HasSupportFragmen
     @Inject
     DispatchingAndroidInjector<Fragment> fragmentInjector;
 
-    @Inject MainFragment mainFragment;
+    @Inject
+    MainFragment mainFragment;
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         AndroidInjection.inject(this);
