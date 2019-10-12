@@ -15,6 +15,6 @@ public interface Contract {
     interface IPresenter {
         void onAttachUI();
 
-        void onDetachUI();
+//        void onDetachUI();
     }
 }

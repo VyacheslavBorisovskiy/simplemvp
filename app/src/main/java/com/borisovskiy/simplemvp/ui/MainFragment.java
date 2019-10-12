@@ -1,5 +1,6 @@
 package com.borisovskiy.simplemvp.ui;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,8 +42,14 @@ public class MainFragment extends Fragment implements Contract.IView {
     }
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState) {
+    public void onAttach(Context context) {
         AndroidSupportInjection.inject(this);
+        super.onAttach(context);
+    }
+
+
+    @Override
+    public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setRetainInstance(true);
 //        presenter = new Presenter(this, new QuoteModel());
@@ -68,11 +75,6 @@ public class MainFragment extends Fragment implements Contract.IView {
         recViewAdapter.setItems(items);
     }
 
-    @Override
-    public void onDestroyView() {
-        unbinder.unbind();
-        super.onDestroyView();
-    }
 
     @Override
     public void onStart() {
@@ -82,7 +84,13 @@ public class MainFragment extends Fragment implements Contract.IView {
 
     @Override
     public void onStop() {
-        presenter.onDetachUI();
+//        presenter.onDetachUI();
         super.onStop();
+    }
+
+    @Override
+    public void onDestroyView() {
+        unbinder.unbind();
+        super.onDestroyView();
     }
 }
