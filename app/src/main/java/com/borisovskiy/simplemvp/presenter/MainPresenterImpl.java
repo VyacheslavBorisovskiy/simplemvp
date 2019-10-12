@@ -27,6 +27,6 @@ public class MainPresenterImpl implements MainContract.MainPresenter, Quote.OnSe
 
     @Override
     public void onDestroy() {
-        mainView = null;
+//        mainView = null;
     }
 }
